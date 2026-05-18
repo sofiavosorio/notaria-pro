@@ -1,0 +1,181 @@
+<div class="h-screen flex flex-col overflow-hidden" style="background:#f9f9ff; color:#151c27; font-family:'Inter',sans-serif;">
+
+  <!-- HEADER -->
+  <header class="flex justify-between items-center w-full px-10 h-20 shrink-0 shadow-sm border-b" style="background:#f9f9ff; border-color:#c5c6ce;">
+    <div class="flex items-center gap-4">
+      <span class="material-symbols-outlined text-4xl" style="color:#04122e;">account_balance</span>
+      <div>
+        <h1 class="text-2xl font-bold" style="color:#04122e;">Notaría Pro</h1>
+        <p class="text-xs uppercase tracking-widest opacity-70" style="color:#45464d;">Sistema Inteligente de Turnos</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-8">
+      <div class="text-right">
+        <p class="text-lg font-semibold" style="color:#151c27;">{{fecha}}</p>
+        <p class="text-2xl font-bold" style="color:#0051d5;">{{hora}}</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow flex p-8 gap-8 overflow-hidden">
+
+    <!-- IZQUIERDA 2/3: Turno actual + historial -->
+    <section class="flex flex-col gap-6" style="width:66%;">
+
+      <!-- Turno actual -->
+      @if (turnoActual) {
+      <div class="flex-grow rounded-3xl shadow-2xl border-4 flex flex-col items-center justify-center p-12 relative overflow-hidden"
+           style="background:#1a2744; border-color:#0051d5;">
+        <!-- Grid decorativo -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+            </pattern></defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+          </svg>
+        </div>
+
+        <span class="px-8 py-2 rounded-full font-bold text-lg uppercase tracking-widest mb-6" style="background:#0051d5; color:#fff;">
+          Llamado Actual
+        </span>
+        <h2 style="font-size:140px; line-height:1; font-weight:800; color:#fff; letter-spacing:-0.04em;">
+          {{turnoActual.numeroTurno}}
+        </h2>
+        <div class="flex items-center justify-center gap-6 mt-4" style="color:#828eb1;">
+          <span class="material-symbols-outlined text-6xl">meeting_room</span>
+          <p class="text-3xl font-bold" style="color:#b9c6eb;">Ventanilla 01</p>
+        </div>
+        <div class="absolute bottom-8 right-8 flex items-center gap-2 opacity-60" style="color:#b9c6eb;">
+          <span class="material-symbols-outlined text-sm">info</span>
+          <p class="text-sm">Por favor diríjase al módulo indicado</p>
+        </div>
+      </div>
+      } @else {
+      <div class="flex-grow rounded-3xl shadow-xl border-4 flex flex-col items-center justify-center p-12" style="background:#1a2744; border-color:#c5c6ce;">
+        <span class="material-symbols-outlined text-6xl mb-4" style="color:#828eb1;">hourglass_empty</span>
+        <p class="text-2xl font-bold" style="color:#b9c6eb;">Sin turno en atención</p>
+        <p class="text-sm mt-2" style="color:#828eb1;">En espera del siguiente llamado</p>
+      </div>
+      }
+
+      <!-- Historial reciente -->
+      <div class="grid grid-cols-3 gap-5 shrink-0">
+        <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center"
+             style="background:#e2e8f8; border-color:#c5c6ce;">
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Turno Anterior</p>
+          <p class="text-2xl font-bold" style="color:#04122e;">
+            {{recientes[0]?.numeroTurno ?? '---'}}
+          </p>
+          <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
+            {{recientes[0] ? etiquetaRegistro(recientes[0].tipoRegistro) : 'Sin datos'}}
+          </p>
+        </div>
+        <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center opacity-80"
+             style="background:#e2e8f8; border-color:#c5c6ce;">
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Anterior 2</p>
+          <p class="text-2xl font-bold" style="color:#04122e;">
+            {{recientes[1]?.numeroTurno ?? '---'}}
+          </p>
+          <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
+            {{recientes[1] ? etiquetaRegistro(recientes[1].tipoRegistro) : 'Sin datos'}}
+          </p>
+        </div>
+        <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center opacity-60"
+             style="background:#e2e8f8; border-color:#c5c6ce;">
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Anterior 3</p>
+          <p class="text-2xl font-bold" style="color:#04122e;">
+            {{recientes[2]?.numeroTurno ?? '---'}}
+          </p>
+          <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
+            {{recientes[2] ? etiquetaRegistro(recientes[2].tipoRegistro) : 'Sin datos'}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DERECHA 1/3: Próximos turnos -->
+    <aside class="flex flex-col rounded-3xl border shadow-lg overflow-hidden" style="width:34%; background:#f0f3ff; border-color:#c5c6ce;">
+      <div class="p-6 border-b" style="background:#e7eefe; border-color:#c5c6ce;">
+        <h3 class="text-2xl font-bold flex items-center gap-3" style="color:#04122e;">
+          <span class="material-symbols-outlined" style="color:#0051d5;">format_list_numbered</span>
+          Próximos Turnos
+        </h3>
+      </div>
+
+      <div class="flex-grow p-5 flex flex-col gap-4 overflow-y-auto">
+        @if (proximos.length === 0) {
+          <div class="flex flex-col items-center justify-center h-full opacity-50">
+            <span class="material-symbols-outlined text-4xl mb-2">inbox</span>
+            <p class="text-sm">No hay turnos en espera</p>
+          </div>
+        }
+        @for (t of proximos; track t.id) {
+          <div class="p-5 rounded-2xl border-2 flex justify-between items-center"
+               [style.background]="bgPrioridad(t.tipoPersona)"
+               [style.border-color]="colorPrioridad(t.tipoPersona)">
+            <div class="flex flex-col">
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full uppercase w-fit mb-1"
+                    [style.background]="colorPrioridad(t.tipoPersona)"
+                    style="color:#fff;">
+                {{etiquetaPrioridad(t.tipoPersona)}}
+              </span>
+              <p class="text-2xl font-bold leading-none" style="color:#151c27;">{{t.numeroTurno}}</p>
+              <p class="text-xs opacity-80 mt-1" style="color:#45464d;">{{etiquetaRegistro(t.tipoRegistro)}}</p>
+            </div>
+            <span class="material-symbols-outlined text-5xl" [style.color]="colorPrioridad(t.tipoPersona)">
+              {{iconoPersona(t.tipoPersona)}}
+            </span>
+          </div>
+        }
+      </div>
+
+      <!-- Info -->
+      <div class="p-5" style="background:#04122e; color:#fff;">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 flex items-center justify-center" style="background:#1a2744;">
+            <span class="material-symbols-outlined text-3xl" style="color:#828eb1;">balance</span>
+          </div>
+          <div>
+            <p class="font-bold text-sm">Notaría Digital</p>
+            <p class="text-xs opacity-70">Realice trámites en notariapro.com.co</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER TICKER -->
+  <footer class="flex items-center h-16 overflow-hidden shrink-0" style="background:#2a313d; color:#ebf1ff;">
+    <div class="px-8 h-full flex items-center shrink-0 shadow-lg z-10" style="background:#0051d5;">
+      <p class="text-lg font-bold whitespace-nowrap text-white">Notaría Pro</p>
+    </div>
+    <div style="overflow:hidden; flex:1;">
+      <div style="display:inline-block; white-space:nowrap; padding-left:100%; animation:ticker 30s linear infinite;">
+        <span class="text-base mx-10 flex items-center gap-3 inline-flex">
+          <span class="material-symbols-outlined" style="color:#0051d5;">campaign</span>
+          Recuerde tener sus documentos originales a la mano para agilizar el proceso.
+        </span>
+        <span class="text-base mx-10 inline-flex items-center gap-3">
+          <span class="material-symbols-outlined" style="color:#0051d5;">schedule</span>
+          Horario de atención: Lunes a Viernes de 8:00 AM a 5:00 PM.
+        </span>
+        <span class="text-base mx-10 inline-flex items-center gap-3">
+          <span class="material-symbols-outlined" style="color:#0051d5;">star</span>
+          Califique nuestro servicio escaneando los códigos QR en cada ventanilla.
+        </span>
+      </div>
+    </div>
+    <div class="px-8 h-full flex items-center shrink-0 border-l z-10" style="background:#2a313d; border-color:#75777e;">
+      <p class="font-bold" style="color:#b4c5ff;">Sede Central</p>
+    </div>
+  </footer>
+</div>
+
+<style>
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+</style>

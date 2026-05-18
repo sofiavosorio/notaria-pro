@@ -1,0 +1,19 @@
+# ── Angular / Node ────────────────────────────────────
+node_modules/
+dist/
+.angular/
+.cache/
+
+# ── Scripts de desarrollo (no parte del proyecto) ─────
+capturar_*.js
+crear_word*.js
+generar_*.js
+capturas/
+
+# ── IDE ───────────────────────────────────────────────
+.vscode/
+.idea/
+
+# ── Sistema operativo ─────────────────────────────────
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+-- =====================================================
+-- Notaría Pro - Categorías de Prioridad
+-- =====================================================
+-- Tipo Persona         | Peso | Descripción
+-- PRIORITARIO          |  3   | Discapacidad / Embarazo
+-- ADULTO_MAYOR         |  2   | Adulto Mayor (60+)
+-- REGULAR              |  1   | Ciudadano regular
+--
+-- Tipo Registro        | Peso | Descripción
+-- RAPIDO               |  3   | Autenticaciones
+-- INTERMEDIO           |  2   | Registros Civiles
+-- COMPLEJO             |  1   | Escrituras / Sucesiones
+--
+-- Fórmula Aging:
+-- Peso Final = (Peso Persona + Peso Registro) + (Minutos Espera / 10)
+--
+-- Ratio Justicia: 3 prioritarios : 1 regular
+-- =====================================================

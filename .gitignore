@@ -1,0 +1,27 @@
+# ── Maven / Java ──────────────────────────────────────
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# ── IDE ───────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/
+nbproject/
+nbactions.xml
+nb-configuration.xml
+build/
+
+# ── Sistema operativo ─────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Variables sensibles ───────────────────────────────
+application-prod.properties
+*.env
