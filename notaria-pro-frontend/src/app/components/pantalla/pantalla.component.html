@@ -6,7 +6,7 @@
       <span class="material-symbols-outlined text-4xl" style="color:#04122e;">account_balance</span>
       <div>
         <h1 class="text-2xl font-bold" style="color:#04122e;">Notaría Pro</h1>
-        <p class="text-xs uppercase tracking-widest opacity-70" style="color:#45464d;">Sistema Inteligente de Turnos</p>
+        <p class="text-xs uppercase tracking-widest opacity-70" style="color:#45464d;">Intelligent Queue System</p>
       </div>
     </div>
     <div class="flex items-center gap-8">
@@ -38,25 +38,25 @@
         </div>
 
         <span class="px-8 py-2 rounded-full font-bold text-lg uppercase tracking-widest mb-6" style="background:#0051d5; color:#fff;">
-          Llamado Actual
+          Now Serving
         </span>
         <h2 style="font-size:140px; line-height:1; font-weight:800; color:#fff; letter-spacing:-0.04em;">
           {{turnoActual.numeroTurno}}
         </h2>
         <div class="flex items-center justify-center gap-6 mt-4" style="color:#828eb1;">
           <span class="material-symbols-outlined text-6xl">meeting_room</span>
-          <p class="text-3xl font-bold" style="color:#b9c6eb;">Ventanilla 01</p>
+          <p class="text-3xl font-bold" style="color:#b9c6eb;">Window 01</p>
         </div>
         <div class="absolute bottom-8 right-8 flex items-center gap-2 opacity-60" style="color:#b9c6eb;">
           <span class="material-symbols-outlined text-sm">info</span>
-          <p class="text-sm">Por favor diríjase al módulo indicado</p>
+          <p class="text-sm">Please proceed to the indicated window</p>
         </div>
       </div>
       } @else {
       <div class="flex-grow rounded-3xl shadow-xl border-4 flex flex-col items-center justify-center p-12" style="background:#1a2744; border-color:#c5c6ce;">
         <span class="material-symbols-outlined text-6xl mb-4" style="color:#828eb1;">hourglass_empty</span>
-        <p class="text-2xl font-bold" style="color:#b9c6eb;">Sin turno en atención</p>
-        <p class="text-sm mt-2" style="color:#828eb1;">En espera del siguiente llamado</p>
+        <p class="text-2xl font-bold" style="color:#b9c6eb;">No ticket in service</p>
+        <p class="text-sm mt-2" style="color:#828eb1;">Waiting for next call</p>
       </div>
       }
 
@@ -64,32 +64,32 @@
       <div class="grid grid-cols-3 gap-5 shrink-0">
         <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center"
              style="background:#e2e8f8; border-color:#c5c6ce;">
-          <p class="text-xs font-bold uppercase opacity-50 mb-1">Turno Anterior</p>
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Previous Ticket</p>
           <p class="text-2xl font-bold" style="color:#04122e;">
             {{recientes[0]?.numeroTurno ?? '---'}}
           </p>
           <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
-            {{recientes[0] ? etiquetaRegistro(recientes[0].tipoRegistro) : 'Sin datos'}}
+            {{recientes[0] ? etiquetaRegistro(recientes[0].tipoRegistro) : 'No data'}}
           </p>
         </div>
         <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center opacity-80"
              style="background:#e2e8f8; border-color:#c5c6ce;">
-          <p class="text-xs font-bold uppercase opacity-50 mb-1">Anterior 2</p>
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Previous 2</p>
           <p class="text-2xl font-bold" style="color:#04122e;">
             {{recientes[1]?.numeroTurno ?? '---'}}
           </p>
           <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
-            {{recientes[1] ? etiquetaRegistro(recientes[1].tipoRegistro) : 'Sin datos'}}
+            {{recientes[1] ? etiquetaRegistro(recientes[1].tipoRegistro) : 'No data'}}
           </p>
         </div>
         <div class="rounded-xl p-5 border shadow-sm flex flex-col items-center justify-center opacity-60"
              style="background:#e2e8f8; border-color:#c5c6ce;">
-          <p class="text-xs font-bold uppercase opacity-50 mb-1">Anterior 3</p>
+          <p class="text-xs font-bold uppercase opacity-50 mb-1">Previous 3</p>
           <p class="text-2xl font-bold" style="color:#04122e;">
             {{recientes[2]?.numeroTurno ?? '---'}}
           </p>
           <p class="text-xs mt-1 opacity-60" style="color:#45464d;">
-            {{recientes[2] ? etiquetaRegistro(recientes[2].tipoRegistro) : 'Sin datos'}}
+            {{recientes[2] ? etiquetaRegistro(recientes[2].tipoRegistro) : 'No data'}}
           </p>
         </div>
       </div>
@@ -100,7 +100,7 @@
       <div class="p-6 border-b" style="background:#e7eefe; border-color:#c5c6ce;">
         <h3 class="text-2xl font-bold flex items-center gap-3" style="color:#04122e;">
           <span class="material-symbols-outlined" style="color:#0051d5;">format_list_numbered</span>
-          Próximos Turnos
+          Upcoming Tickets
         </h3>
       </div>
 
@@ -108,7 +108,7 @@
         @if (proximos.length === 0) {
           <div class="flex flex-col items-center justify-center h-full opacity-50">
             <span class="material-symbols-outlined text-4xl mb-2">inbox</span>
-            <p class="text-sm">No hay turnos en espera</p>
+            <p class="text-sm">No tickets in queue</p>
           </div>
         }
         @for (t of proximos; track t.id) {
@@ -138,8 +138,8 @@
             <span class="material-symbols-outlined text-3xl" style="color:#828eb1;">balance</span>
           </div>
           <div>
-            <p class="font-bold text-sm">Notaría Digital</p>
-            <p class="text-xs opacity-70">Realice trámites en notariapro.com.co</p>
+            <p class="font-bold text-sm">Digital Notary</p>
+            <p class="text-xs opacity-70">Complete procedures at notariapro.com.co</p>
           </div>
         </div>
       </div>
@@ -155,20 +155,20 @@
       <div style="display:inline-block; white-space:nowrap; padding-left:100%; animation:ticker 30s linear infinite;">
         <span class="text-base mx-10 flex items-center gap-3 inline-flex">
           <span class="material-symbols-outlined" style="color:#0051d5;">campaign</span>
-          Recuerde tener sus documentos originales a la mano para agilizar el proceso.
+          Remember to have your original documents ready to speed up the process.
         </span>
         <span class="text-base mx-10 inline-flex items-center gap-3">
           <span class="material-symbols-outlined" style="color:#0051d5;">schedule</span>
-          Horario de atención: Lunes a Viernes de 8:00 AM a 5:00 PM.
+          Office hours: Monday to Friday from 8:00 AM to 5:00 PM.
         </span>
         <span class="text-base mx-10 inline-flex items-center gap-3">
           <span class="material-symbols-outlined" style="color:#0051d5;">star</span>
-          Califique nuestro servicio escaneando los códigos QR en cada ventanilla.
+          Rate our service by scanning the QR codes at each window.
         </span>
       </div>
     </div>
     <div class="px-8 h-full flex items-center shrink-0 border-l z-10" style="background:#2a313d; border-color:#75777e;">
-      <p class="font-bold" style="color:#b4c5ff;">Sede Central</p>
+      <p class="font-bold" style="color:#b4c5ff;">Main Branch</p>
     </div>
   </footer>
 </div>

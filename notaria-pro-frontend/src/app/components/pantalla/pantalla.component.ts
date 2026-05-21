@@ -47,8 +47,8 @@ export class PantallaComponent implements OnInit, OnDestroy {
 
   actualizarReloj(): void {
     const now = new Date();
-    this.hora = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
-    this.fecha = now.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
+    this.hora = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    this.fecha = now.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
   }
 
   iconoPersona(tipo: string): string {
@@ -67,12 +67,12 @@ export class PantallaComponent implements OnInit, OnDestroy {
   }
 
   etiquetaPrioridad(tipo: string): string {
-    const m: Record<string, string> = { PRIORITARIO: 'Prioridad Alta', ADULTO_MAYOR: 'Prioridad Media', REGULAR: 'General' };
+    const m: Record<string, string> = { PRIORITARIO: 'High Priority', ADULTO_MAYOR: 'Senior Citizen', REGULAR: 'General' };
     return m[tipo] ?? 'General';
   }
 
   etiquetaRegistro(tipo: string): string {
-    const m: Record<string, string> = { RAPIDO: 'Autenticación', INTERMEDIO: 'Registro Civil', COMPLEJO: 'Escrituración' };
+    const m: Record<string, string> = { RAPIDO: 'Authentication', INTERMEDIO: 'Civil Registry', COMPLEJO: 'Notarial Deed' };
     return m[tipo] ?? tipo;
   }
 }

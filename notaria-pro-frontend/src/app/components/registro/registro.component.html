@@ -6,7 +6,7 @@
       <span class="material-symbols-outlined text-4xl" style="color:#04122e;">account_balance</span>
       <div>
         <h1 class="text-2xl font-bold" style="color:#04122e;">Notaría Pro</h1>
-        <p class="text-xs" style="color:#45464d;">Sistema Inteligente de Turnos</p>
+        <p class="text-xs" style="color:#45464d;">Intelligent Queue System</p>
       </div>
     </div>
     <div class="flex gap-2">
@@ -37,7 +37,7 @@
                  [style.color]="s === 1 ? '#fff' : '#45464d'"
                  style="border-color:#f9f9ff;">{{s}}</div>
             <span class="text-xs mt-2 font-medium" [style.color]="s === 1 ? '#04122e' : '#45464d'">
-              {{s===1?'Datos':s===2?'Servicio':'Confirmar'}}
+              {{s===1?'Data':s===2?'Service':'Confirm'}}
             </span>
           </div>
         }
@@ -47,12 +47,12 @@
     <!-- Card -->
     <div class="w-full max-w-lg rounded-xl shadow-md overflow-hidden border" style="background:#fff; border-color:#c5c6ce;">
       <div class="p-8">
-        <h2 class="text-2xl font-bold mb-1" style="color:#04122e;">Datos Personales</h2>
-        <p class="text-sm mb-6" style="color:#45464d;">Por favor, ingrese su información para agendar su turno en la notaría.</p>
+        <h2 class="text-2xl font-bold mb-1" style="color:#04122e;">Personal Information</h2>
+        <p class="text-sm mb-6" style="color:#45464d;">Please enter your information to register your ticket at the notary.</p>
 
         <div class="space-y-5">
           <div>
-            <label class="block text-sm font-semibold mb-1">Cédula de Ciudadanía</label>
+            <label class="block text-sm font-semibold mb-1">National ID</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2" style="color:#45464d;">badge</span>
               <input [(ngModel)]="form.cedula" type="text" placeholder="1234567890"
@@ -61,25 +61,25 @@
             </div>
           </div>
           <div>
-            <label class="block text-sm font-semibold mb-1">Nombre Completo</label>
+            <label class="block text-sm font-semibold mb-1">Full Name</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2" style="color:#45464d;">person</span>
-              <input [(ngModel)]="form.nombre" type="text" placeholder="Ej: Juan Pérez"
+              <input [(ngModel)]="form.nombre" type="text" placeholder="E.g.: John Doe"
                 class="w-full pl-12 pr-4 py-4 rounded-lg border outline-none"
                 style="background:#f0f3ff; border-color:#c5c6ce;" />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-semibold mb-1">Correo Electrónico</label>
+            <label class="block text-sm font-semibold mb-1">Email Address</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2" style="color:#45464d;">mail</span>
-              <input [(ngModel)]="form.email" type="email" placeholder="nombre@ejemplo.com"
+              <input [(ngModel)]="form.email" type="email" placeholder="name@example.com"
                 class="w-full pl-12 pr-4 py-4 rounded-lg border outline-none"
                 style="background:#f0f3ff; border-color:#c5c6ce;" />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-semibold mb-1">Número de WhatsApp</label>
+            <label class="block text-sm font-semibold mb-1">Phone Number</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2" style="color:#45464d;">phone</span>
               <div class="absolute left-12 top-1/2 -translate-y-1/2 text-sm font-semibold pr-2 border-r" style="color:#45464d; border-color:#c5c6ce;">+57</div>
@@ -88,21 +88,21 @@
                 style="background:#f0f3ff; border-color:#c5c6ce;" />
             </div>
             <p class="text-xs mt-1 flex items-center gap-1" style="color:#45464d;">
-              <span class="material-symbols-outlined text-sm" style="color:#25D366;">chat</span>
-              Recibirá su turno por WhatsApp en este número.
+              <span class="material-symbols-outlined text-sm" style="color:#0051d5;">mail</span>
+              Your ticket will be sent to your email address.
             </p>
           </div>
           <div class="pt-2">
             <button (click)="siguientePaso()" [disabled]="!form.cedula || !form.nombre || !form.email || !form.telefono"
               class="w-full py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 transition-all"
               style="background:#04122e; color:#fff;">
-              Siguiente <span class="material-symbols-outlined">arrow_forward</span>
+              Next <span class="material-symbols-outlined">arrow_forward</span>
             </button>
           </div>
         </div>
       </div>
       <div class="py-3 px-8 border-t text-center text-xs" style="background:#f0f3ff; border-color:#c5c6ce; color:#45464d;">
-        Su información está protegida bajo la Ley de Tratamiento de Datos.
+        Your information is protected under Data Privacy Law.
       </div>
     </div>
   </main>
@@ -120,21 +120,21 @@
       <!-- Progreso paso 2 -->
       <div class="mb-8">
         <div class="flex justify-between items-center mb-3">
-          <h2 class="text-2xl font-bold" style="color:#04122e;">Su Perfil y Trámite</h2>
-          <span class="text-xs px-3 py-1 rounded-full" style="background:#dce2f3; color:#45464d;">Paso 2 de 3</span>
+          <h2 class="text-2xl font-bold" style="color:#04122e;">Your Profile &amp; Service</h2>
+          <span class="text-xs px-3 py-1 rounded-full" style="background:#dce2f3; color:#45464d;">Step 2 of 3</span>
         </div>
         <div class="h-2 rounded-full overflow-hidden" style="background:#dce2f3;">
           <div class="h-full rounded-full" style="width:66%; background:#0051d5;"></div>
         </div>
         <div class="flex justify-between mt-2 text-xs">
           <span class="flex items-center gap-1" style="color:#45464d;">
-            <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">check_circle</span> Identificación
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">check_circle</span> Identification
           </span>
           <span class="font-bold flex items-center gap-1" style="color:#0051d5;">
-            <span class="material-symbols-outlined text-sm">radio_button_checked</span> Trámite
+            <span class="material-symbols-outlined text-sm">radio_button_checked</span> Service
           </span>
           <span class="flex items-center gap-1 opacity-50" style="color:#45464d;">
-            <span class="material-symbols-outlined text-sm">radio_button_unchecked</span> Confirmación
+            <span class="material-symbols-outlined text-sm">radio_button_unchecked</span> Confirmation
           </span>
         </div>
       </div>
@@ -146,8 +146,8 @@
             <span class="material-symbols-outlined" style="color:#828eb1;">person_search</span>
           </div>
           <div>
-            <h3 class="text-lg font-bold" style="color:#04122e;">¿Cuál es su condición?</h3>
-            <p class="text-sm" style="color:#45464d;">Seleccione una opción para ajustar su prioridad en la fila.</p>
+            <h3 class="text-lg font-bold" style="color:#04122e;">What is your condition?</h3>
+            <p class="text-sm" style="color:#45464d;">Select an option to adjust your priority in the queue.</p>
           </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -174,8 +174,8 @@
             <span class="material-symbols-outlined" style="color:#828eb1;">assignment</span>
           </div>
           <div>
-            <h3 class="text-lg font-bold" style="color:#04122e;">¿Qué trámite va a realizar?</h3>
-            <p class="text-sm" style="color:#45464d;">El tiempo de atención varía según la complejidad del servicio.</p>
+            <h3 class="text-lg font-bold" style="color:#04122e;">What service will you be performing?</h3>
+            <p class="text-sm" style="color:#45464d;">Service time varies depending on the complexity of the procedure.</p>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -215,19 +215,19 @@
         <div class="flex items-center gap-6">
           <div class="w-16 h-16 rounded-2xl flex flex-col items-center justify-center text-white" style="background:#04122e;">
             <span class="text-3xl font-bold leading-none">{{pesoEstimado()}}</span>
-            <span class="text-xs uppercase font-bold opacity-80">Puntos</span>
+            <span class="text-xs uppercase font-bold opacity-80">Points</span>
           </div>
           <div>
-            <h5 class="text-lg font-bold" style="color:#04122e;">Peso Estimado</h5>
-            <p class="text-sm" style="color:#45464d;">Su turno será priorizado según su puntaje total.</p>
+            <h5 class="text-lg font-bold" style="color:#04122e;">Estimated Weight</h5>
+            <p class="text-sm" style="color:#45464d;">Your ticket will be prioritized based on your total score.</p>
           </div>
         </div>
         <div class="flex gap-4 w-full md:w-auto">
           <button (click)="anteriorPaso()" class="flex-1 md:flex-none px-8 py-4 rounded-xl border font-bold transition-all" style="background:#fff; border-color:#c5c6ce; color:#04122e;">
-            Atrás
+            Back
           </button>
           <button (click)="siguientePaso()" class="flex-1 md:flex-none px-12 py-4 rounded-xl font-bold shadow-lg transition-all active:scale-95" style="background:#0051d5; color:#fff;">
-            Solicitar Turno
+            Request Ticket
           </button>
         </div>
       </div>
@@ -237,13 +237,13 @@
   <!-- Bottom nav móvil -->
   <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 rounded-t-xl shadow-lg" style="background:#dce2f3;">
     <a class="flex flex-col items-center text-xs" style="color:#45464d;">
-      <span class="material-symbols-outlined">add_task</span> Nuevo Turno
+      <span class="material-symbols-outlined">add_task</span> New Ticket
     </a>
     <a class="flex flex-col items-center px-6 py-1 rounded-full text-xs" style="background:#04122e; color:#fff;">
-      <span class="material-symbols-outlined">confirmation_number</span> Mi Estado
+      <span class="material-symbols-outlined">confirmation_number</span> My Status
     </a>
     <a class="flex flex-col items-center text-xs" style="color:#45464d;">
-      <span class="material-symbols-outlined">distance</span> Sedes
+      <span class="material-symbols-outlined">distance</span> Branches
     </a>
   </nav>
   }
@@ -276,13 +276,13 @@
           <span class="material-symbols-outlined text-5xl" style="color:#2e7d32; font-variation-settings:'FILL' 1;">check_circle</span>
         </div>
 
-        <h1 class="text-3xl font-bold mb-2" style="color:#04122e;">¡Turno Asignado!</h1>
-        <p class="text-lg mb-8" style="color:#45464d;">Su solicitud ha sido procesada exitosamente.</p>
+        <h1 class="text-3xl font-bold mb-2" style="color:#04122e;">Ticket Assigned!</h1>
+        <p class="text-lg mb-8" style="color:#45464d;">Your request has been processed successfully.</p>
 
         @if (turnoRegistrado) {
         <!-- Número de turno -->
         <div class="rounded-xl px-10 py-6 mb-10 shadow-lg flex flex-col items-center cursor-default hover:scale-105 transition-transform" style="background:#04122e; color:#fff;">
-          <span class="text-xs uppercase tracking-widest mb-1" style="color:#828eb1;">CÓDIGO DE TURNO</span>
+          <span class="text-xs uppercase tracking-widest mb-1" style="color:#828eb1;">TICKET CODE</span>
           <span style="font-size:64px; line-height:1; font-weight:800; letter-spacing:-0.02em;">{{turnoRegistrado.numeroTurno}}</span>
         </div>
 
@@ -290,50 +290,50 @@
         <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div class="p-4 rounded-lg flex flex-col items-start border" style="background:#f0f3ff; border-color:#c5c6ce;">
             <span class="text-xs flex items-center gap-1 mb-1" style="color:#45464d;">
-              <span class="material-symbols-outlined text-sm">description</span> Trámite
+              <span class="material-symbols-outlined text-sm">description</span> Service
             </span>
             <span class="text-lg font-semibold" style="color:#04122e;">{{etiquetaRegistro(turnoRegistrado.tipoRegistro)}}</span>
           </div>
           <div class="p-4 rounded-lg flex flex-col items-start border" style="background:#f0f3ff; border-color:#c5c6ce;">
             <span class="text-xs flex items-center gap-1 mb-1" style="color:#45464d;">
-              <span class="material-symbols-outlined text-sm">person</span> Condición
+              <span class="material-symbols-outlined text-sm">person</span> Condition
             </span>
             <span class="text-lg font-semibold" style="color:#04122e;">{{etiquetaPersona(turnoRegistrado.tipoPersona)}}</span>
           </div>
           <div class="p-4 rounded-lg flex flex-col items-start border" style="background:#f0f3ff; border-color:#c5c6ce;">
             <span class="text-xs flex items-center gap-1 mb-1" style="color:#45464d;">
-              <span class="material-symbols-outlined text-sm">star</span> Peso inicial
+              <span class="material-symbols-outlined text-sm">star</span> Initial Weight
             </span>
-            <span class="text-lg font-semibold" style="color:#04122e;">{{turnoRegistrado.pesoFinal | number:'1.0-0'}} puntos</span>
+            <span class="text-lg font-semibold" style="color:#04122e;">{{turnoRegistrado.pesoFinal | number:'1.0-0'}} points</span>
           </div>
           <div class="p-4 rounded-lg flex flex-col items-start border" style="background:#f0f3ff; border-color:#c5c6ce;">
             <span class="text-xs flex items-center gap-1 mb-1" style="color:#45464d;">
-              <span class="material-symbols-outlined text-sm">event</span> Fecha
+              <span class="material-symbols-outlined text-sm">event</span> Date
             </span>
             <span class="text-lg font-semibold" style="color:#04122e;">{{hoy()}}</span>
           </div>
         </div>
 
-        <!-- Info WhatsApp -->
-        <div class="w-full p-4 rounded-lg flex items-start gap-4 mb-6 border-l-4" style="background:#d9f7e1; border-color:#25D366;">
-          <span class="material-symbols-outlined" style="color:#25D366;">chat</span>
+        <!-- Info Email -->
+        <div class="w-full p-4 rounded-lg flex items-start gap-4 mb-6 border-l-4" style="background:#e7eefe; border-color:#0051d5;">
+          <span class="material-symbols-outlined" style="color:#0051d5;">mail</span>
           <div class="text-left">
-            <p class="text-sm font-semibold" style="color:#0a5c1e;">¡Turno enviado por WhatsApp!</p>
+            <p class="text-sm font-semibold" style="color:#00174b;">Ticket sent by email!</p>
             <p class="text-sm" style="color:#151c27;">
-              Hemos enviado su turno <strong>{{turnoRegistrado.numeroTurno}}</strong> al número
-              <strong>+57 {{turnoRegistrado.telefono ?? form.telefono}}</strong>
+              We have sent your ticket <strong>{{turnoRegistrado.numeroTurno}}</strong> to
+              <strong>{{turnoRegistrado.email ?? form.email}}</strong>
             </p>
           </div>
         </div>
 
         <p class="text-xs mb-10 flex items-center gap-2" style="color:#45464d;">
           <span class="material-symbols-outlined text-sm">info</span>
-          Por favor permanezca atento a las pantallas de la sala de espera.
+          Please remain attentive to the waiting room screens.
         </p>
         }
 
         <button (click)="reiniciar()" class="inline-flex items-center gap-2 font-bold hover:underline transition-all" style="color:#0051d5;">
-          Registrar otro turno <span class="material-symbols-outlined">arrow_forward</span>
+          Register another ticket <span class="material-symbols-outlined">arrow_forward</span>
         </button>
       </div>
 
@@ -342,7 +342,7 @@
         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7ZDpwLwvaFsxXQq5ZZ8yyJtL54rE-_r-29jQKntZsXkCurzOWP4ZtvZ1pkZ_9DTcL_0ViXSoC82rCaFe2aZQ_fY6-_iHh2RgE7w7_4M3psLKHOnkBDnILsNCsccwwmBlHwuFc98gpOZahwj_y-lCvN5RJMmWt7x4U0qXZ00m1QwHysqOAl5bfc4A64PwaRxwh6TjV_pziCFGIzgRPR6e5dYF_ICfDRC51prlQwgWZ_kVEkzpNLbtNVQMdoYVxrlpFUUc_uSJ5eIY"
              alt="Notaría" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
         <div class="absolute inset-0 flex items-end p-6" style="background:linear-gradient(to top, rgba(4,18,46,0.8) 0%, transparent 100%);">
-          <p class="text-sm text-left" style="color:#fff;">Su tiempo es importante para nosotros. Notaría Pro, agilizando trámites desde 2024.</p>
+          <p class="text-sm text-left" style="color:#fff;">Your time is important to us. Notaría Pro, streamlining procedures since 2024.</p>
         </div>
       </div>
 
@@ -351,13 +351,13 @@
 
   <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 rounded-t-xl shadow-lg" style="background:#dce2f3;">
     <button (click)="reiniciar()" class="flex flex-col items-center text-xs" style="color:#45464d;">
-      <span class="material-symbols-outlined">add_task</span> Nuevo Turno
+      <span class="material-symbols-outlined">add_task</span> New Ticket
     </button>
     <a class="flex flex-col items-center px-6 py-1 rounded-full text-xs" style="background:#04122e; color:#fff;">
-      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">confirmation_number</span> Mi Estado
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">confirmation_number</span> My Status
     </a>
     <a class="flex flex-col items-center text-xs" style="color:#45464d;">
-      <span class="material-symbols-outlined">distance</span> Sedes
+      <span class="material-symbols-outlined">distance</span> Branches
     </a>
   </nav>
   }

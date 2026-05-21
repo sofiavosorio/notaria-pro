@@ -24,15 +24,15 @@ export class RegistroComponent {
   errorRegistro = '';
 
   condiciones = [
-    { val: 'PRIORITARIO' as TurnoRequest['tipoPersona'], label: 'Embarazo / Discapacidad', sub: 'Suma 3 puntos', icon: 'pregnant_woman', badge: 'Prioridad Alta', badgeBg: '#ba1a1a', badgeColor: '#fff',    color: '#ba1a1a', bg: '#fff0f0' },
-    { val: 'ADULTO_MAYOR' as TurnoRequest['tipoPersona'], label: 'Adulto Mayor',             sub: 'Suma 2 puntos', icon: 'elderly',        badge: '+62 años',    badgeBg: '#316bf3', badgeColor: '#fefcff', color: '#0051d5', bg: '#e7eefe' },
-    { val: 'REGULAR'      as TurnoRequest['tipoPersona'], label: 'Público General',           sub: 'Base 1 punto',  icon: 'person',         badge: 'Regular',     badgeBg: '#dce2f3', badgeColor: '#45464d', color: '#75777e', bg: '#fff'    },
+    { val: 'PRIORITARIO' as TurnoRequest['tipoPersona'], label: 'Pregnancy / Disability', sub: 'Adds 3 points', icon: 'pregnant_woman', badge: 'High Priority', badgeBg: '#ba1a1a', badgeColor: '#fff',    color: '#ba1a1a', bg: '#fff0f0' },
+    { val: 'ADULTO_MAYOR' as TurnoRequest['tipoPersona'], label: 'Senior Citizen',         sub: 'Adds 2 points', icon: 'elderly',        badge: '+62 years',    badgeBg: '#316bf3', badgeColor: '#fefcff', color: '#0051d5', bg: '#e7eefe' },
+    { val: 'REGULAR'      as TurnoRequest['tipoPersona'], label: 'General Public',          sub: 'Base 1 point',  icon: 'person',         badge: 'Regular',      badgeBg: '#dce2f3', badgeColor: '#45464d', color: '#75777e', bg: '#fff'    },
   ];
 
   tramites = [
-    { val: 'RAPIDO'     as TurnoRequest['tipoRegistro'], label: 'Autenticaciones / Reconocimiento de Firma', badge: 'Rápido',     icon: 'bolt',          iconBg: '#ffdeab', iconColor: '#271900', badgeBg: '#e3c28d', badgeColor: '#271900', color: '#372400', bg: '#fffbf0', tiempo: 'Est. 10 min', pts: 3 },
-    { val: 'INTERMEDIO' as TurnoRequest['tipoRegistro'], label: 'Registros Civiles / Permisos de Salida',    badge: 'Intermedio', icon: 'assignment_ind', iconBg: '#0051d5', iconColor: '#fff',    badgeBg: '#dbe1ff', badgeColor: '#00174b', color: '#0051d5', bg: '#eef1ff', tiempo: 'Est. 25 min', pts: 2 },
-    { val: 'COMPLEJO'   as TurnoRequest['tipoRegistro'], label: 'Escrituras / Sucesiones / Hipotecas',       badge: 'Complejo',   icon: 'history_edu',   iconBg: '#04122e', iconColor: '#fff',    badgeBg: '#d9e2ff', badgeColor: '#0d1b37', color: '#04122e', bg: '#f0f3ff', tiempo: 'Est. 60 min', pts: 1 },
+    { val: 'RAPIDO'     as TurnoRequest['tipoRegistro'], label: 'Authentications / Signature Recognition', badge: 'Quick',        icon: 'bolt',          iconBg: '#ffdeab', iconColor: '#271900', badgeBg: '#e3c28d', badgeColor: '#271900', color: '#372400', bg: '#fffbf0', tiempo: 'Est. 10 min', pts: 3 },
+    { val: 'INTERMEDIO' as TurnoRequest['tipoRegistro'], label: 'Civil Registry / Exit Permits',           badge: 'Intermediate', icon: 'assignment_ind', iconBg: '#0051d5', iconColor: '#fff',    badgeBg: '#dbe1ff', badgeColor: '#00174b', color: '#0051d5', bg: '#eef1ff', tiempo: 'Est. 25 min', pts: 2 },
+    { val: 'COMPLEJO'   as TurnoRequest['tipoRegistro'], label: 'Deeds / Estates / Mortgages',             badge: 'Complex',      icon: 'history_edu',   iconBg: '#04122e', iconColor: '#fff',    badgeBg: '#d9e2ff', badgeColor: '#0d1b37', color: '#04122e', bg: '#f0f3ff', tiempo: 'Est. 60 min', pts: 1 },
   ];
 
   constructor(private turnoService: TurnoService) {}
@@ -55,13 +55,13 @@ export class RegistroComponent {
       error: (err) => {
         this.cargando = false;
         if (err.status === 0) {
-          this.errorRegistro = 'Sin conexión. Verifique que el backend esté activo en el puerto 8080.';
+          this.errorRegistro = 'No connection. Verify the backend is running on port 8080.';
         } else if (typeof err.error === 'string' && err.error.trim()) {
           this.errorRegistro = err.error;
         } else {
-          this.errorRegistro = `Error ${err.status as number}: no se pudo registrar el turno.`;
+          this.errorRegistro = `Error ${err.status as number}: could not register the ticket.`;
         }
-        console.error('Error al registrar turno:', err);
+        console.error('Error registering ticket:', err);
       }
     });
   }
@@ -80,16 +80,16 @@ export class RegistroComponent {
   }
 
   etiquetaPersona(t: string): string {
-    const m: Record<string, string> = { PRIORITARIO: 'Embarazo / Discapacidad', ADULTO_MAYOR: 'Adulto Mayor', REGULAR: 'Regular' };
+    const m: Record<string, string> = { PRIORITARIO: 'Pregnancy / Disability', ADULTO_MAYOR: 'Senior Citizen', REGULAR: 'Regular' };
     return m[t] ?? t;
   }
 
   etiquetaRegistro(t: string): string {
-    const m: Record<string, string> = { RAPIDO: 'Autenticaciones', INTERMEDIO: 'Registros Civiles', COMPLEJO: 'Escritura Pública' };
+    const m: Record<string, string> = { RAPIDO: 'Authentications', INTERMEDIO: 'Civil Registry', COMPLEJO: 'Public Deed' };
     return m[t] ?? t;
   }
 
   hoy(): string {
-    return new Date().toLocaleDateString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return new Date().toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
 }

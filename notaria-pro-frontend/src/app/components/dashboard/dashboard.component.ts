@@ -45,12 +45,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       next: (t) => {
         this.turnoActual = t;
         this.cargandoSiguiente = false;
-        this.mostrarMensaje('Turno ' + t.numeroTurno + ' llamado', true);
+        this.mostrarMensaje('Ticket ' + t.numeroTurno + ' called', true);
         this.cargarDatos();
       },
       error: (err) => {
         this.cargandoSiguiente = false;
-        this.mostrarMensaje(err.status === 400 || err.status === 404 ? 'No hay turnos en espera' : 'Error al llamar siguiente', false);
+        this.mostrarMensaje(err.status === 400 || err.status === 404 ? 'No tickets in queue' : 'Error calling next ticket', false);
       }
     });
   }
@@ -60,14 +60,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.cargandoFinalizar = true;
     this.turnoService.finalizar(this.turnoActual.id).subscribe({
       next: () => {
-        this.mostrarMensaje('Turno finalizado correctamente', true);
+        this.mostrarMensaje('Ticket completed successfully', true);
         this.turnoActual = null;
         this.cargandoFinalizar = false;
         this.cargarDatos();
       },
       error: () => {
         this.cargandoFinalizar = false;
-        this.mostrarMensaje('Error al finalizar turno', false);
+        this.mostrarMensaje('Error completing ticket', false);
       }
     });
   }
@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   tiempoEspera(fechaCreacion: string): string {
     const diff = Date.now() - new Date(fechaCreacion).getTime();
     const min = Math.floor(diff / 60000);
-    if (min < 1) return 'Recién llegado';
+    if (min < 1) return 'Just arrived';
     if (min === 1) return '1 min';
     return `${min} min`;
   }
@@ -102,12 +102,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   etiquetaPrioridad(tipo: string): string {
-    const m: Record<string, string> = { PRIORITARIO: 'Prioritario', ADULTO_MAYOR: 'Adulto Mayor', REGULAR: 'Regular' };
+    const m: Record<string, string> = { PRIORITARIO: 'Priority', ADULTO_MAYOR: 'Senior Citizen', REGULAR: 'Regular' };
     return m[tipo] ?? tipo;
   }
 
   etiquetaRegistro(tipo: string): string {
-    const m: Record<string, string> = { RAPIDO: 'Autenticación', INTERMEDIO: 'Registro Civil', COMPLEJO: 'Escrituración' };
+    const m: Record<string, string> = { RAPIDO: 'Authentication', INTERMEDIO: 'Civil Registry', COMPLEJO: 'Notarial Deed' };
     return m[tipo] ?? tipo;
   }
 
