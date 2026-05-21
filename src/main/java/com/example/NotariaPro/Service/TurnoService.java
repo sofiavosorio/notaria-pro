@@ -25,7 +25,7 @@ public class TurnoService {
     private TurnoRepository turnoRepository;
 
     @Autowired
-    private WhatsAppService whatsAppService;
+    private EmailService emailService;
 
     // Contador en memoria para el ratio 3:1
     private int contadorPrioritariosConsecutivos = 0;
@@ -45,9 +45,9 @@ public class TurnoService {
 
         turno = turnoRepository.save(turno);
 
-        // Enviar turno por WhatsApp
-        whatsAppService.enviarTurno(
-                turno.getTelefono(),
+        // Enviar turno por Email
+        emailService.enviarTurno(
+                turno.getEmail(),
                 turno.getNumeroTurno(),
                 turno.getNombre(),
                 turno.getTipoRegistro().name(),
